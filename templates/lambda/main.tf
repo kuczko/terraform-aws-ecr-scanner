@@ -50,7 +50,7 @@ data "archive_file" "dotfiles" {
 resource "aws_lambda_function" "lambda" {
   function_name = "${var.name_prefix}-${random_string.lambda_postfix_generator.result}"
   filename      = data.archive_file.dotfiles.output_path
-
+  timeout       = 90
   environment {
     variables = var.environment
   }
