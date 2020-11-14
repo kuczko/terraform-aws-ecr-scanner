@@ -56,9 +56,9 @@ module "ecr-scan-trigger-lambda" {
   handler = "lambda_function.lambda_handler"
   runtime = "python3.6"
 
-  subnet_ids = var.subnet_ids
+  subnet_ids         = var.subnet_ids
   security_group_ids = var.security_group_ids
-
+  timeout            = 90
 
   tags = merge(
     var.tags,
@@ -79,7 +79,7 @@ module "ecr-scan-notify-lambda" {
   handler = "lambda_function.lambda_handler"
   runtime = "python3.6"
 
-  subnet_ids = var.subnet_ids
+  subnet_ids         = var.subnet_ids
   security_group_ids = var.security_group_ids
 
   environment = {
